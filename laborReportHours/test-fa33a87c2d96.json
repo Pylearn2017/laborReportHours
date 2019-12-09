@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nimble-crane-223313",
+  "private_key_id": "fa33a87c2d962516942f09a9047764ff5cc7507d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDcF4vj2MwSMEeJ\nbhCBsQCRB855qFvKMb2lZVUoWIBxK3GVmCXSgabsb/47hh/pgDWEHbPxqcUUjAQc\n6Su2/HIFv9TSL0Ui1njrqx3B1NATdWq84iWnKGmS9cdTEl1+oxVIQxqB0NyZ3kfL\nOPCU89hQPLmEX2yUfXK5sfikEjum83dxn/0vSEQmsE3KDTBVh5CzHrjnWODHfwOE\nAFYqNUU2pGJlXdPA9pfrrmTmwcWuPPKb02K8D5cXvORHozvUsNsoQGx9VSsTkeZj\n0Z326vsQ5c5NG/1xy1XgzyGGB7k28+HZidiBafldKUbuPnHydDdwogojPL3yQInp\n/W62X/p1AgMBAAECggEAL/ZSph+90v3h7QVHBBg4RSK0IGdrv1uJFjTHsr/cl6zt\ntvmdzmqyH2bFep+/LxGhN+4II3MJb3GWyN0YSWtohq+392jVMmMWHVdgJ/gSMxdc\noBZROcTxAtVcL1J6fOkZr3JuIZmMJVze/N6m8PLVsiCVlg78eLyAxo5N3qVZigcv\ndTs641eijjp5pX/Im0MLPJWcEqiSNIM+Xf61NlJNNJZVKGoe+rfYupDIycChoIaT\nAbOzOeX+hrSX6nuUmKqjnguNF+9u4Ev15Iuwg4ZRdfgcD6k9lBdWjNKHmhfojdyQ\nCAdr22NAylpfxZcojFwuTZNt5EyAloGw/Px8zgSDmQKBgQD3o8UPEjKM95y2pXqD\nfi6loM0Be87c7YlDjaEQhTHYppFSynfw+afj2gOM38quVjfaug6i9i8E1z6VTLAq\nnt+VPMng09bDZGudaEgZln2sDaLwJDzDeyiYzLMLgCTt6FEEo43kG+7LE3p+nkxc\n+7rgDND+EkxCD78sqYZwustaWQKBgQDjhbHhOo67vmdw8fjVCYH3akMKxVhbOaYc\ngTe4qyp21NDor35G5HThS5id5VbiaJeoALHDbGRNo/hqblZLQqN5ZaHXQaUbwR0B\naZqgG3RnGCIxzBY/UAP+E3xCZOEOqhU0d89eS806rA1TVH7O8apABksZTwLQchjo\nFQBtOHYlfQKBgQDKKQLM++ESnW1s2Yg7Yj44bh4NsQG975hX8n3jG6kGoWwPd0QV\nD+oUIz00utkeGzp7r9oVBP57aDAp97H1CT+i+D4h8S3o0sjbdm8tnGI5m+RBQIPu\nXVNV8f3UTKdZJIdHTzGdX4RAekVMqnPSkJoNH8lZMJzabTp2/mnHC2bI+QKBgQC1\nmHwFXIuX5b0CNN96igAlzbZ83k5LYZPnpGspBdT6y5mCXq/XPXjcaU4CmI3kX77L\n5OH9LIJSRdF8gVx27VU1C51FBawWnufbvMIhkEg0ENsaC96l4eON41eGVqYa4j3S\nht4IUVAYyEJKhGJCIjjUqTE/ngSNAsRGWJzij/IcsQKBgATY/7Q4X/2QJ7auTl35\nwuuokrYO0Is8bo7GPzDAn3ht128bSVe87M0ZgUxHw4S63r3PjszGwiZPzilAshkQ\npk0MXaHGhkGnR93LP2g/UjNd6a2N2advIc/cFp6D8W/aPAB6lsr47snGgFruk4mv\nxW5TIAbcnF1ji1Kb99QwoHt+\n-----END PRIVATE KEY-----\n",
+  "client_email": "labor-report-hours@nimble-crane-223313.iam.gserviceaccount.com",
+  "client_id": "101889205870075785575",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/labor-report-hours%40nimble-crane-223313.iam.gserviceaccount.com"
+}
