@@ -1,22 +1,22 @@
-import gspread
-import locale 
+from gspread import authorize 
 from oauth2client.service_account import ServiceAccountCredentials
-from pprint import pprint
-import datetime
-import calendar
-import time
+from datetime import datetime
+from calendar import Calendar
+from pprint import pprint # ~
 
-cal = calendar.Calendar()
+cal = Calendar()
 
 def get_wokr_day_without_holiday(month, year):
 	month = int(month)
 	year = int(year)
+	print('Получаю количество дней месяца', months[month], year, 'года', end='...')
 	weekday_count = 0
 	for week in cal.monthdayscalendar(year, month):
 		for i, day in enumerate(week):
 			if day == 0 or i >= 5:
 				continue
 			weekday_count += 1
+	print('✔')
 	return weekday_count
 
 def get_weekends_list(month, year):
@@ -28,6 +28,7 @@ def get_weekends_list(month, year):
 	return weekends_list
 
 def get_workers_dictionary():
+	print('Получаю список работников', end='...')
 	workers = {}
 	first_worker_name = worksheet.find('Штат')
 	row = int(first_worker_name.row) + 1
@@ -38,12 +39,36 @@ def get_workers_dictionary():
 		new_worker_name = worksheet.acell('A' + str(row)).value
 		worker_name = new_worker_name
 		workers[worker_name] = worksheet.acell('B' + str(row)).value
+		print('.', end='.')
 	workers = {k: v for k, v in workers.items() if v}
+	print('✔')	
 	return workers	
 
-def get_vacation_days_list():
+def get_workers_orders():
+	print('Получаю список заказов', end='...')
+	orders = {}
+	first_order = worksheet.find('Заказы')
+	row = int(first_order.row) + 1
+	order = worksheet.acell('A' + str(row)).value
+	k_list = []
+
+	while order:
+		row += 1
+		new_order = worksheet.acell('A' + str(row)).value
+		order = new_order
+		if worksheet.acell('C' + str(row)).value in ['Открыт', 'Приостановлен'] :
+			list_order_k = worksheet.row_values(row)
+			orders[order] = list(filter(None, list_order_k[1:]))
+			print('.', end='.')
+	orders = {k: v for k, v in orders.items() if v}
+	print('✔')	
+	return orders
+
+
+def get_vacation_days_list(workers_dictionary):
+	print('Получаю диапазоны отпусков', end='...')
 	vacation_days_list = []
-	workers = get_workers_dictionary()
+	workers = workers_dictionary
 
 	first_vacation_period = worksheet.find('Отпуска')
 	row = int(first_vacation_period.row) + 1
@@ -55,10 +80,13 @@ def get_vacation_days_list():
 		vacation_day = new_vacation_day
 		list_vacation_day = worksheet.row_values(row)
 		vacation_days_list.append(list(filter(None, list_vacation_day)))
+		print('.', end='.')
 	vacation_days_list = list(filter(None, vacation_days_list))
+	print('✔')	
 	return vacation_days_list	
 
 def get_holydays_list(weekends_list, m, y):
+	print('Получаю список праздничных дней', end='...')
 	month_num = int(m)
 	month = months[month_num]
 	holydays = []
@@ -73,22 +101,28 @@ def get_holydays_list(weekends_list, m, y):
 		holyday = new_holyday
 		list_holydays = worksheet.row_values(row)
 		holydays.append(list(filter(None, list_holydays)))
+		print('.', end='.')
 	for holyday_month in holydays:
 		try:
 			if month == holyday_month[1]:
 				holydays_list += holyday_month[2:]
 		except:
-			continue		
+			continue	
+	print('✔')				
 	return holydays_list	
 
 def check_half_day():
+	print('Проверяю * - короткие дни', end='...')
 	holydays = get_holydays_list()
 	for index in holydays:
 		if index:
 			if index[1] == month:
 				if '*' in row:
+					print('✔')	
 					return work_hours - 1
+
 				else:
+					print('✔')	
 					return work_hours	
 
 def get_hours_staff(work_days, workers_dictionary, vacation_days_list, weekends_list, holydays_list, m, y):
@@ -125,8 +159,45 @@ def get_hours_staff(work_days, workers_dictionary, vacation_days_list, weekends_
 		work_hours_staff_dictionary[name] = int(hours_staff_dictionary[name] * work_days_staff_dictionary[name]) 
 		if '*' in holydays_list:
 			work_hours_staff_dictionary[name] -= 1
-	print(work_days)
+	print('Считаю часы для', work_days, 'рабочих дней....✔')
 	return work_hours_staff_dictionary
+
+def get_k_dictionary(workers_dictionary, workers_orders):
+	k_dictionary = {}
+	new_m = []
+	i = 0
+	m = list(workers_orders.values())
+	for item in m:
+		new_m.append(item[2:])
+	matrix = list(zip(*new_m))
+	for worker in workers_dictionary.keys():
+		k_dictionary[worker] = matrix[i]
+		i +=  1	
+	return k_dictionary		
+
+def get_row_orders(workers_orders):
+	row_orders = []
+	for order, hours in workers_orders.items():
+		row_orders.append(order + ' - ' + hours[0])
+	row_orders.append('Отпуск')
+	row_orders.append('Простои')
+	return row_orders	
+
+def get_hours_k_dictionary(k_dictionary, hours_staff):
+	hours_k_dictionary = {}
+	k_hours = []
+	for worker, hours in hours_staff.items():
+		for k in k_dictionary[worker]:
+			k_hour = int(k) * hours
+			k_hours.append(int(k_hour/100))
+		hours_k_dictionary[worker] = k_hours
+		k_hours = []	
+	return hours_k_dictionary
+
+def write_title(month, year):
+	pass
+
+
 
 
 months = ['',
@@ -150,29 +221,36 @@ scope = [
 	"https://www.googleapis.com/auth/drive.file",
 	"https://www.googleapis.com/auth/drive"
 ]
+try:
+	creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+except:
+	print('Нет доступа, обратитесь к разработчику alexlik73@gmail.com')
+finally:
+	pass
+	#input('Для продолжения нажмите Enter')		
 
-creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
-
-client = gspread.authorize(creds)
+client = authorize(creds)
 
 sh = client.open("LaborReportHours")  # Open the spreadhseet
 
 worksheet = sh.worksheet("Settings")
 
-
-
-m = datetime.datetime.today().strftime('%m' )
-y = datetime.datetime.today().strftime('%Y' )
-m = 3
+m = datetime.today().strftime('%m' )
+y = datetime.today().strftime('%Y' )
 
 weekends_list = get_weekends_list(m, y)
 work_days = get_wokr_day_without_holiday(m, y)
 workers_dictionary = get_workers_dictionary()
-vacation_days_list = get_vacation_days_list()
+workers_orders = get_workers_orders()
+vacation_days_list = get_vacation_days_list(workers_dictionary)
 holydays_list = get_holydays_list(weekends_list, m, y)
-
-pprint(get_hours_staff(work_days,workers_dictionary, vacation_days_list, weekends_list, holydays_list, m, y))	
-
-
+hours_staff = get_hours_staff(work_days,workers_dictionary, vacation_days_list, weekends_list, holydays_list, m, y)
+k_dictionary = get_k_dictionary(hours_staff, workers_orders)
+hours_k_dictionary = get_hours_k_dictionary(k_dictionary, hours_staff)
+#row_orders = get_row_orders(workers_orders)
+pprint(hours_k_dictionary)
+pprint(workers_orders)
+pprint(hours_staff)
 #title = months[int(m)-1] + ' ' + y + ' года'
 #worksheet.update_acell('B5', title)
+
