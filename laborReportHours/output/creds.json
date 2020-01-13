@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "labor-report-hours",
+  "private_key_id": "014504ae05c8c268562e370e795391fd3090af33",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCXq8k77oQvE8aR\ngADW8tAR/lPpgOMvrSsv6sD6THH7VQOGklbXkiBT6GHb3FT0biTws/+5x2MKTLgN\nFT7UjsfdgEl9Eynpyc+WHK3VZg5X3rwxWx60cyww7Ult1Pcq9TtVEy3Mca1f2gsX\npsVPLMqLqoTHJn/P/PW9lR1U47rF7AkR8nGPPhuHLXlwl5dOqEEgDr2e7Zb0k6U2\nYgLLvp6oCZGsBLd1kW5+hKJJL1YaAuVXqV0C6Rkm7OYlFwJMyNaKjFX10GVZg2/S\nLTCE6qQkVIsOtQ0iY16BepBK+40jOWemq1hLMAUDX3ZsZ8dub7M/t0005gX9JQn7\nsxp9gIUxAgMBAAECggEAEj1xDnmRQP4eV7oun6sE1d0hp0e+SqoHMxSGz7Mo1AJ1\n0ZXAxt0GcUDVn/S/7MNgQuhKvUNayE7QpZYj/7kKFTvL2rRWyoxgIBvj1fGXkP6y\n4DammynsqxemSISfkvV6BLGxRNB4+rmEsvv1558p3qELpc2d+lvgC8QmimJ2wD2C\noic4qp6XYhOCEy+4zgtIOfbzWrt4t2rrN72PJX4gar1p7Af1ER4m8FbYYc/Hx/KJ\n6Vtwd1l+M2nYFHeGTxF5m0dymaRJp3I5tC8TEgN2cO+V9GYEk9ivS/Zv+5eDmuQS\n/U7XNYtsyTWPw5RmRBM8rDv7plzUjHbVeFHy2gyvVwKBgQDQ2LjY8opDF7a95YNG\nkJukAhQFehqvTlYH2iFAvmmz64eq0xyI++js7OS+paxVheZIy8Bfs4rYmGjRMfbc\nJHdXZNDjaV3FmpN1tSF4WOFuny6WhbLkwOdvGs/9JY3cpe9UnQ6+DnLC7uN+WuJ9\nC1htfTLW2pmXFKHTGn9x2KQ/hwKBgQC56lVCejL+I/svixYBNCXXwPbDMp4kFYhq\nEUcL+jlTwI6MQlxhLQMLoVHpPJLh7Nsmf0vJXQL2W0qwGhl7QUmAKYwHaB8KW4hn\n84rG/y2v1MI1kBtADDZv6GeRaFLODOHxmiAy/+4l0SwM0b0ZIVlY6Iw6pCUiSr1C\nogMs03QThwKBgFzAg4fGX+VgOMapkd3bB2SVj7LHAebtkYO3OqF4b5V6eyxAyiGE\nT3Q52XVaOulYqGeYJf3azUVYmuSdnhczEtV7btIwz3adKfRS12SNhMEObTBofITf\nr2lGrSyuawydnWckwZFi9VDhq6NIVeJXEZS+z79gImpYvW32DLfREVEtAoGAPtls\nBzQeRvHM+Y6QWsnRPTW7ddOHyHULD6hVl0P420pOJjZM2oEH9YeMlEdo9D1I/KOt\n8B2kYboM7ql0EcnJWi0xbFOTosG8xD99m7YqMLXBDbBwtd8rC/vJ/0sAKy4Jt849\nsl/4lwo2VQMWZQd0F+1NcomJECWqA3uXjTDSncMCgYB8nbWxNDivsKTyZviQbqe9\nyYiXaILj7P4Jw1SNM59h6/tamiHhMaSvfL0AB9XwpuxKPsKJm1Q91d+5M2lGgo7f\ntk/99eVe4B/tIuMLvjgHo326qT/dWyXFgNI9NVZaHJTPgY7uzyJEgEHd7Hghl09H\nnuyP2tKgjyrlj8w+rLV73g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "labor-report-hours@labor-report-hours.iam.gserviceaccount.com",
+  "client_id": "117953072401934668320",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/labor-report-hours%40labor-report-hours.iam.gserviceaccount.com"
+}
